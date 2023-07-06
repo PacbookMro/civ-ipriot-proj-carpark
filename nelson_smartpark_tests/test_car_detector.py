@@ -6,6 +6,9 @@ from nelson_smartpark.car_detector import CarDetector
 
 class TestCarDetector(unittest.TestCase):
     def test_outgoing_car_does_not_exceed_total_spaces(self):
+        """
+        Test that the available bays do not exceed the total spaces when outgoing car button is pressed.
+        """
         config_string = '''
         [[CarParks]]
         name = "raf-park-international"
@@ -37,6 +40,9 @@ class TestCarDetector(unittest.TestCase):
             self.assertLessEqual(car_detector.available_bays, config["CarParks"][0]["total-spaces"])
 
     def test_incoming_car_does_not_go_negative(self):
+        """
+        Test that the available bays do not become negative when incoming car button is pressed.
+        """
         config_string = '''
         [[CarParks]]
         name = "raf-park-international"
