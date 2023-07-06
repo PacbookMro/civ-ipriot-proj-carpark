@@ -88,3 +88,7 @@ To run the unit tests for the project, follow these steps:
    ```shell
    python -m nelson_smartpark_tests.test_car_detector
    ```
+
+5. The car detector GUI will pop up for each test.
+6. Click the `x` each time to close the window.
+7. Any test results will be output to the terminal.
