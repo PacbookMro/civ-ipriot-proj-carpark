@@ -3,6 +3,12 @@ import paho.mqtt.client as mqtt
 
 class CarDetector:
     def __init__(self, config):
+        """
+        Initializes the CarDetector class.
+
+        Args:
+            config (dict): Configuration parameters for the car detector.
+        """
         self.config = config
         self.available_bays = 0
 
@@ -23,10 +29,22 @@ class CarDetector:
         self.root.mainloop()
 
     def publish_detection(self, car_type):
+        """
+        Publishes the car detection event to the MQTT broker.
+
+        Args:
+            car_type (str): Type of car event (incoming or outgoing).
+        """
         payload = f"{self.config['name']}_{car_type}"
         self.mqtt_client.publish("car_detection", payload)
 
     def incoming_car(self):
+        """
+        Handles the incoming car event.
+
+        Increments the available bays if there are vacant spots and publishes the detection event.
+        Prints the current available bays count.
+        """
         if self.available_bays < self.config["total-spaces"]:
             self.available_bays += 1
             print(f"Available bays: {self.available_bays}")
@@ -35,6 +53,12 @@ class CarDetector:
             print("All bays are occupied")
 
     def outgoing_car(self):
+        """
+        Handles the outgoing car event.
+
+        Decrements the available bays if there are cars to remove and publishes the detection event.
+        Prints the current available bays count.
+        """
         if self.available_bays > 0:
             self.available_bays -= 1
             print(f"Available bays: {self.available_bays}")

@@ -7,6 +7,13 @@ class WindowedDisplay:
     SEP = ':'
 
     def __init__(self, title: str, display_fields: Iterable[str]):
+        """
+        Initializes the WindowedDisplay class.
+
+        Args:
+            title (str): The title of the window.
+            display_fields (Iterable[str]): The fields to be displayed in the window.
+        """
         # Create the main window
         self.window = tk.Tk()
         self.window.title(f'{title}: Parking')
@@ -32,11 +39,20 @@ class WindowedDisplay:
                 row=i, column=2, sticky=tk.W, padx=10)
 
     def show(self):
-        # Start the main window event loop
+        """
+        Displays the window.
+
+        Starts the main window event loop.
+        """
         self.window.mainloop()
 
     def update(self, updated_values: dict):
-        # Update the values of the display fields
+        """
+        Updates the values of the display fields.
+
+        Args:
+            updated_values (dict): A dictionary containing the updated values for the display fields.
+        """
         for field in self.gui_elements:
             if field.startswith('lbl_field'):
                 field_value = field.replace('field', 'value')
