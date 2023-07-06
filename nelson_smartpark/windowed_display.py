@@ -7,13 +7,19 @@ class WindowedDisplay:
     SEP = ':'
 
     def __init__(self, title: str, display_fields: Iterable[str]):
+        # Create the main window
         self.window = tk.Tk()
         self.window.title(f'{title}: Parking')
         self.window.geometry('800x400')
         self.window.resizable(False, False)
+
+        # Store the display fields
         self.display_fields = display_fields
 
+        # Create the GUI elements dictionary
         self.gui_elements = {}
+
+        # Create labels for each display field
         for i, field in enumerate(self.display_fields):
             self.gui_elements[f'lbl_field_{i}'] = tk.Label(
                 self.window, text=field + self.SEP, font=('Arial', 50))
@@ -26,9 +32,11 @@ class WindowedDisplay:
                 row=i, column=2, sticky=tk.W, padx=10)
 
     def show(self):
+        # Start the main window event loop
         self.window.mainloop()
 
     def update(self, updated_values: dict):
+        # Update the values of the display fields
         for field in self.gui_elements:
             if field.startswith('lbl_field'):
                 field_value = field.replace('field', 'value')

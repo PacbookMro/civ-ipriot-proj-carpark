@@ -45,6 +45,7 @@ class CarDetector:
 if __name__ == '__main__':
     import toml
 
+    # Load the config from the TOML file
     with open('config.toml', 'r') as f:
         config = toml.load(f)["CarParks"][0]
 

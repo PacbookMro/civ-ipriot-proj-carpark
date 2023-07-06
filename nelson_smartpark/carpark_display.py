@@ -14,11 +14,14 @@ class CarParkDisplay:
         updater = threading.Thread(target=self.check_updates)
         updater.daemon = True
         updater.start()
+
+        # MQTT client setup
         self.mqtt_client = mqtt.Client()
         self.mqtt_client.connect(self.config["broker"], self.config["port"])
         self.mqtt_client.subscribe("car_detection")
         self.mqtt_client.on_message = self.on_message
         self.mqtt_client.loop_start()
+
         self.window.show()
 
     def on_message(self, client, userdata, message):
@@ -42,6 +45,7 @@ class CarParkDisplay:
 if __name__ == '__main__':
     import toml
 
+    # Load the config from the TOML file
     with open('config.toml', 'r') as f:
         config = toml.load(f)["CarParks"][0]
 
