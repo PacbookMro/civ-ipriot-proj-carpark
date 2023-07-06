@@ -70,6 +70,7 @@ To run the application, follow these steps:
 8. The car park display GUI should open, showing the available bays, temperature, and timestamp.
 9. Press the "Incoming Car" or "Outgoing Car" buttons in the car detector GUI to simulate cars entering or leaving the car park.
 10. The car park display will update in real-time based on the car detector's actions.
+11. The above steps were all performed in the PyCharm IDE using the venv Python 3.x interpreter and associated packages. Make sure to setup and install any missing packages if attempting to run using alternative methods.
 
 ## Running Unit Tests
 
