@@ -4,7 +4,7 @@ if __name__ == '__main__':
     # Publish a test message
     publish.single("carpark/test", "Hello from Python", hostname="localhost")
 
-# Comment out the above code uncomment this back in to test if mosquitto broker is working
+# Comment out the above code and uncomment back in to test for additional troubleshooting and write message to file
 #
 # import paho.mqtt.client as mqtt
 #

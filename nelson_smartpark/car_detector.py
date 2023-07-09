@@ -47,10 +47,11 @@ class CarDetector:
         """
         if self.available_bays < self.config["total-spaces"]:
             self.available_bays += 1
-            print(f"Available bays: {self.available_bays}")
+            parking_bays_available = self.config["total-spaces"] - self.available_bays
+            print(f"Parking bays remaining: {parking_bays_available}")
             self.publish_detection("incoming")
         else:
-            print("All bays are occupied")
+            print("Parking lot has all bays occupied.")
 
     def outgoing_car(self):
         """
@@ -61,10 +62,11 @@ class CarDetector:
         """
         if self.available_bays > 0:
             self.available_bays -= 1
-            print(f"Available bays: {self.available_bays}")
+            parking_bays_available = self.config["total-spaces"] - self.available_bays
+            print(f"Parking bays remaining: {parking_bays_available}")
             self.publish_detection("outgoing")
         else:
-            print("No cars to remove")
+            print("Parking lot has no cars to remove.")
 
 if __name__ == '__main__':
     import toml
