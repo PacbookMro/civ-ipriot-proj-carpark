@@ -1,6 +1,7 @@
 # Smart Car Park System
 
-This project implements a smart car park system that tracks the number of available parking bays and displays the status in real-time. It utilizes MQTT messaging for communication between the car detector and the car park display.
+This project implements a smart car park system that tracks the number of available parking bays and displays the status in real-time.
+It utilizes MQTT messaging for communication between the car detector and the car park display.
 
 ## Prerequisites
 
@@ -9,13 +10,14 @@ Before running the project, make sure you have the following prerequisites insta
 - Python 3.x
 - Paho MQTT library (`paho-mqtt`)
 - Tkinter library (included with Python)
-- Toml library (`tomli`)
+- Toml library (`toml`)
+- Tomli library (`tomli`)
 - Mosquitto 
 
 You can install the required libraries by running the following command:
 
 ```shell
-pip install paho-mqtt tomli
+pip install paho-mqtt toml tomli
 ```
 
 ## Setup
@@ -40,31 +42,30 @@ Follow the steps below to set up and run the project:
 ## Running the Application
 
 To run the application, follow these steps:
-1. Run the MQTT broker (e.g., Mosquitto) to enable communication between components.
+1. If not already running as a background service, open up a terminal and run the MQTT broker (e.g., Mosquitto) to enable communication between components.
 2. Open a terminal and navigate to the project directory subdirectory nelson_smartpark.
 3. Repeat 2. for steps 4 - 7.
-4. Run the mqtt subscriber to receive MQTT messages and update the car park display:
+4. (Optional) Run the mqtt subscriber to test broker is setup to receive MQTT messages:
 
    ```shell
    python simple_mqtt_sub.py
    ```
+5. (Optional) Run the mqtt publisher to publish a test message:
 
-5. Run the car park display GUI:
+   ```shell
+   python simple_mqtt_pub.py
+   ```
+
+6. Run the car park display GUI:
 
    ```shell
    python run_carpark_display.py
    ```
 
-6. Run the car detector GUI:
+7. Run the car detector GUI:
 
    ```shell
    python run_car_detector.py
-   ```
-   
-7. (Optional) Run the mqtt publisher to publish MQTT messages for testing:
-
-   ```shell
-   python simple_mqtt_pub.py
    ```
 
 8. The car park display GUI should open, showing the available bays, temperature, and timestamp.
