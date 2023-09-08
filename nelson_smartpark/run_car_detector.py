@@ -1,11 +1,9 @@
 from car_detector import CarDetector
-import toml
+from config import Config
 
-# Load the config from the TOML file
-with open('config.toml', 'r') as f:
-    config = toml.load(f)["CarParks"][0]
+# Create a Config instance from a TOML file
+config = Config('config.toml', park_index=0)
 
-# Create an instance of CarDetector
 car_detector = CarDetector(config)
 
 # Run the car detector
